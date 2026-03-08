@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
- "scripts": {
-  "dev": "vite",
-  "build": "tsc -noEmit && vite build",
-  "preview": "vite preview"
-},
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -noEmit && vite build",
+    "preview": "vite preview"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NikolPap/Memory.git"
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/NikolPap/Memory#readme",
   "devDependencies": {
+    "sass": "^1.97.3",
     "typescript": "^5.9.3",
     "vite": "^7.3.1"
   }
