@@ -8,7 +8,7 @@
 </head>
 <body class="preview-code-vibes">
   <div id="app" class="theme-code-vibes">
-    
+
     <!-- START SCREEN -->
     <section id="screen-start" class="screen active">
       <article class="content">
@@ -18,10 +18,59 @@
           <strong>Play &rarr;</strong>
         </button>
       </article>
-      <img src="./public/assets/images/stadia_controller.svg" alt=" a controller icon">
+      <img src="./public/assets/images/stadia_controller.svg" alt="a controller icon">
     </section>
 
-    
+    <!-- SETTINGS SCREEN -->
+    <section id="screen-settings" class="screen">
+      <div class="settings-wrapper">
+        <main class="settings-left">
+          <h2>Settings</h2>
+          
+          <article class="setting-group">
+            <h3> Game themes</h3>
+            <ul class="setting-options">
+              <li><label><input type="radio" name="theme" value="code-vibes" checked> Code vibes theme</label></li>
+              <li><label><input type="radio" name="theme" value="gaming"> Gaming theme</label></li>
+            </ul>
+          </article>
+
+          <article class="setting-group">
+            <h3>Choose player</h3>
+            <ul class="setting-options">
+              <li><label><input type="radio" name="player" value="blue" checked> Blue</label></li>
+              <li><label><input type="radio" name="player" value="orange"> Orange</label></li>
+            </ul>
+          </article>
+
+          <article class="setting-group">
+            <h3>Board size</h3>
+            <ul class="setting-options">
+              <li><label><input type="radio" name="size" value="16" checked> 16 cards (4x4)</label></li>
+              <li><label><input type="radio" name="size" value="24"> 24 cards (4x6)</label></li>
+              <li><label><input type="radio" name="size" value="64"> 64 cards (8x8)</label></li>
+            </ul>
+          </article>
+        </main>
+
+        <aside class="settings-right">
+          <figure class="preview-box">
+            <figcaption class="sr-only">Theme Preview</figcaption>
+          </figure>
+
+          <nav class="settings-summary-bar">
+            <p class="summary-text">
+              <span id="sum-theme">Code vibes</span> <strong>/</strong> 
+              <span id="sum-player">Blue</span> <strong>/</strong> 
+              <span id="sum-size">16 cards</span>
+            </p>
+            <button id="btn-start" class="btn-yellow">Start</button>
+          </nav>
+        </aside>
+      </div>
+    </section>
+
+  </div>
 
   <script type="module" src="/src/main.ts"></script>
 </body>

@@ -1,21 +1,33 @@
 // ==========================================
-// VARIABLES
-// ==========================================
-$c-white: #ffffff;
+// STATIC COLORS
+$c-white:  #ffffff;
+$c-dark:   #202124;
+$c-yellow: #f4e05d;
+$c-blue:   #3db2e3;
+$c-orange: #f38c35;
 
+// ==========================================
+// CSS VARIABLES (Dynamic Theme Colors)
 :root {
   --bg-main: #303131;
   --text-main: #{$c-white};
 }
 
+#app.theme-code-vibes {
+  --bg-main: #303131;
+}
+
+#app.theme-gaming {
+  --bg-main: #2a4454;
+}
+
 // ==========================================
-// RESET
-// ==========================================
+// RESET & TYPOGRAPHY
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
@@ -23,99 +35,250 @@ body {
   user-select: none;
 }
 
-// ==========================================
-// BASIC ELEMENTS
-// ==========================================
 ul {
   list-style: none;
 }
 
 h1 {
-  font-size: 6rem;
-  margin-bottom: 3rem;
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
 }
 
 p {
-  font-size: 1.8rem;
-  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
 }
 
 // ==========================================
-// APP LAYOUT
+// UTILITIES
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 // ==========================================
+// BUTTONS
+.btn {
+  &-yellow {
+    background: $c-yellow;
+    color: $c-dark;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &-outline {
+    background: transparent;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+// ==========================================
+// LAYOUT & SCREENS
 #app {
   width: 100vw;
   height: 100vh;
   background: var(--bg-main);
   color: var(--text-main);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  transition: background 0.3s;
   position: relative;
 }
 
-// ==========================================
-// SCREEN SYSTEM
-// ==========================================
 .screen {
+  display: none;
   width: 100%;
   height: 100%;
-  position: relative;
-
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  inset: 0;
+
+  &.active {
+    display: flex;
+  }
 }
 
 // ==========================================
 // START SCREEN
-// ==========================================
 #screen-start {
+  position: relative;
+  overflow: hidden;
 
   .content {
     position: relative;
     z-index: 10;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
 
-  // PLAY BUTTON
+  p {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+    color: var(--text-main);
+  }
+
+  h1 {
+    font-size: 6rem;
+    margin-bottom: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-main);
+  }
+
   #btn-play {
     align-self: center;
-
     width: 220px;
     height: 70px;
-
-    background: url("/public/assets/images/play_button.svg") center / contain no-repeat;
-
-    border: none;
     cursor: pointer;
-
-    color: transparent;
-    font-size: 0;
-
     transition: transform 0.2s ease;
 
-    strong {
-      display: none;
-    }
-
     &:hover {
-      background: url("/public/assets/images/play-button_hover.svg") center / contain no-repeat;
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
   }
 
-  // CONTROLLER IMAGE
-  img {
+  > img {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 414px;
-
+    z-index: 1;
     pointer-events: none;
   }
+}
 
+// ==========================================
+// SETTINGS SCREEN
+#screen-settings {
+  background: $c-white;
+  color: $c-dark;
+
+  .settings-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .settings-left {
+    flex: 1;
+
+    h2 {
+      font-size: 54px;
+      color: #2b2b2b;
+      margin-bottom: 3.5rem;
+    }
+
+    .setting-group {
+      margin-bottom: 2.5rem;
+
+      h3 {
+        font-size: 1.5rem;
+        color: #2b2b2b;
+        margin-bottom: 1.2rem;
+      }
+
+      .setting-options {
+        li {
+          margin-bottom: 15px;
+        }
+
+        label {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          cursor: pointer;
+          font-size: 1.25rem;
+          color: #4a4a4a;
+
+          input[type="radio"] {
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #2b2b2b;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            background-color: transparent;
+
+            &:checked::after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 12px;
+              height: 12px;
+              background-color: #2b2b2b;
+              border-radius: 50%;
+            }
+          }
+
+          &:has(input:checked) {
+            font-weight: 600;
+            color: #2b2b2b;
+          }
+        }
+      }
+    }
+  }
+
+  .settings-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .settings-summary-bar {
+    background: #f5f6f8;
+    margin-top: 35px;
+    padding: 10px 25px 10px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 4px;
+
+    .summary-text {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 1.15rem;
+      color: #2b2b2b;
+    }
+
+    #btn-start {
+      width: 130px;
+      height: 50px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
+  }
 }
