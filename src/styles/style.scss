@@ -20,12 +20,12 @@ body {
     &__face{
         position: absolute;
        inset: 0;
-       background-color: black;
+       background-image: url(/public/assets/images/Property\ 1=Component\ 1.svg);
        backface-visibility: hidden;
 
         &--back{
         transform: rotateY(180deg);
-        background-color: red;
+        background-image: url(/public/assets/images/Property\ 1=Component\ 22\ \(1\).svg);
     }
     }
 
