@@ -91,6 +91,37 @@
         <section id="board"></section>
       </main>
 
+      <!-- Modal overlay -->
+      <aside id="quit-modal" class="modal-overlay">
+        <article class="modal-content">
+          <h3>Are you sure you want<br>to quit the game?</h3>
+          <nav class="modal-actions">
+            <button id="btn-quit-no" class="btn-pink">No, back to game</button>
+            <button id="btn-quit-yes" class="btn-outline-pink">Yes, quit game</button>
+          </nav>
+        </article>
+      </aside>
+    </section>
+
+    <!-- GAME OVER SCREEN -->
+    <section id="screen-game-over" class="screen">
+      <h1 class="game-over-title">Game over</h1>
+      <p class="final-score-text">Final score</p>
+      <div id="final-score" class="final-score-pill"></div>
+    </section>
+
+    <!-- WINNER SCREEN -->
+    <section id="screen-winner" class="screen">
+      <p class="winner-text">The winner is</p>
+      <h1 id="winner-name" class="winner-name"></h1>
+      <figure class="winner-icon-box" id="winner-icon">
+        <figcaption class="sr-only">Winner Trophy</figcaption>
+      </figure>
+      <nav>
+        <button id="btn-home" class="btn-outline">Back to start</button>
+      </nav>
+    </section>
+  </div>
 
   <!-- TEMPLATE FOR CARDS (No Inline HTML in JS) -->
   <template id="card-template">
