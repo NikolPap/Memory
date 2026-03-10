@@ -8,7 +8,7 @@
 </head>
 <body class="preview-code-vibes">
   <div id="app" class="theme-code-vibes">
-
+    
     <!-- START SCREEN -->
     <section id="screen-start" class="screen active">
       <article class="content">
@@ -18,7 +18,7 @@
           <strong>Play &rarr;</strong>
         </button>
       </article>
-      <img src="./public/assets/images/stadia_controller.svg" alt="a controller icon">
+      <img src="./public/assets/images/stadia_controller.svg" alt=" a controller icon">
     </section>
 
     <!-- SETTINGS SCREEN -->
@@ -30,6 +30,7 @@
           <article class="setting-group">
             <h3> Game themes</h3>
             <ul class="setting-options">
+              <!-- ONLY 2 THEMES AS REQUESTED -->
               <li><label><input type="radio" name="theme" value="code-vibes" checked> Code vibes theme</label></li>
               <li><label><input type="radio" name="theme" value="gaming"> Gaming theme</label></li>
             </ul>
@@ -56,6 +57,10 @@
         <aside class="settings-right">
           <figure class="preview-box">
             <figcaption class="sr-only">Theme Preview</figcaption>
+            <div class="preview-cards">
+              <div class="preview-card c1"></div>
+              <div class="preview-card c2" id="preview-icon">💻</div>
+            </div>
           </figure>
 
           <nav class="settings-summary-bar">
@@ -70,7 +75,32 @@
       </div>
     </section>
 
-  </div>
+    <!-- GAME SCREEN -->
+    <section id="screen-game" class="screen">
+      <header class="game-header">
+        <div id="score-display" class="score-pill cv"></div>
+        <div class="current-turn">
+          <p>Current player: <span id="turn-icon" class="turn-indicator"></span></p>
+        </div>
+        <nav>
+          <button id="btn-exit" class="btn-outline">Exit game</button>
+        </nav>
+      </header>
+
+      <main class="board-container">
+        <section id="board"></section>
+      </main>
+
+
+  <!-- TEMPLATE FOR CARDS (No Inline HTML in JS) -->
+  <template id="card-template">
+    <article class="card">
+      <button class="card__inner">
+        <span class="card__face card__face--cover"></span>
+        <span class="card__face card__face--content"></span>
+      </button>
+    </article>
+  </template>
 
   <script type="module" src="/src/main.ts"></script>
 </body>
