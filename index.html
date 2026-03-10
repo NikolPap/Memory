@@ -18,7 +18,7 @@
           <strong>Play &rarr;</strong>
         </button>
       </article>
-      <img src="./public/assets/images/stadia_controller.svg" alt=" a controller icon">
+      <img src="./public/assets/images/stadia_controller.svg" alt="a controller icon">
     </section>
 
     <!-- SETTINGS SCREEN -->
@@ -30,7 +30,6 @@
           <article class="setting-group">
             <h3> Game themes</h3>
             <ul class="setting-options">
-              <!-- ONLY 2 THEMES AS REQUESTED -->
               <li><label><input type="radio" name="theme" value="code-vibes" checked> Code vibes theme</label></li>
               <li><label><input type="radio" name="theme" value="gaming"> Gaming theme</label></li>
             </ul>
@@ -94,10 +93,10 @@
       <!-- Modal overlay -->
       <aside id="quit-modal" class="modal-overlay">
         <article class="modal-content">
-          <h3>Are you sure you want<br>to quit the game?</h3>
+          <h3>Are you sure you want to quit<br>the game?</h3>
           <nav class="modal-actions">
-            <button id="btn-quit-no" class="btn-pink">No, back to game</button>
-            <button id="btn-quit-yes" class="btn-outline-pink">Yes, quit game</button>
+            <button id="btn-quit-no" class="btn-modal-fill">Back to game</button>
+            <button id="btn-quit-yes" class="btn-modal-outline">Exit game</button>
           </nav>
         </article>
       </aside>
@@ -123,7 +122,7 @@
     </section>
   </div>
 
-  <!-- TEMPLATE FOR CARDS (No Inline HTML in JS) -->
+  <!-- TEMPLATE FOR CARDS -->
   <template id="card-template">
     <article class="card">
       <button class="card__inner">
