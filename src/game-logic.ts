@@ -189,14 +189,25 @@ function triggerGameOver(): void {
 /** Determines the winner and populates the final screen. */
 function displayWinner(): void {
   const nameEl = getElement("winner-name");
+  const iconBox = getElement("winner-icon"); 
   const diff = STATE.scores.blue - STATE.scores.orange;
   
   if (diff === 0) {
     nameEl.textContent = "IT'S A TIE";
     nameEl.style.color = "var(--text-main)";
+    iconBox.innerHTML = ""; 
   } else {
     const winner = diff > 0 ? "blue" : "orange";
     nameEl.textContent = `${winner.toUpperCase()} PLAYER`;
     nameEl.style.color = `var(--c-${winner})`;
+    if (STATE.theme === "code-vibes") {
+      const iconSrc = winner === "blue" 
+        ? "./assets/images/PlayerBlue.svg" 
+        : "./assets/images/PlayerOrange.svg";
+        
+      iconBox.innerHTML = `<img src="${iconSrc}" alt="${winner} player pawn">`;
+    } else {
+      
+    }
   }
 }
