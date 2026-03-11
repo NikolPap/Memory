@@ -1,10 +1,10 @@
 // ==========================================
 // SCSS VARIABLES (Static Colors)
 // ==========================================
-$c-white:  #ffffff;
-$c-dark:   #202124;
+$c-white: #ffffff;
+$c-dark: #202124;
 $c-yellow: #f4e05d;
-$c-blue:   #3db2e3;
+$c-blue: #3db2e3;
 $c-orange: #f38c35;
 
 // ==========================================
@@ -14,7 +14,7 @@ $c-orange: #f38c35;
   --bg-main: #303131;
   --header-bg: transparent;
   --text-main: #{$c-white};
-  --card-cover: url('/assets/images/codeVibesCart.svg');
+  --card-cover: url("/assets/images/codeVibesCart.svg");
   --card-face: transparent;
   --card-face-text: transparent;
   --score-bg: #40575d;
@@ -23,24 +23,24 @@ $c-orange: #f38c35;
   --modal-bg: #ffffff;
   --modal-text: #333333;
   --modal-btn-color: #60cbb2;
-  --modal-btn-color-hover: #4bb39b; 
+  --modal-btn-color-hover: #4bb39b;
   --modal-btn-radius: 2px;
-  --modal-radius: 8px; 
-  --modal-outline-bg: #f4fdfb; 
+  --modal-radius: 8px;
+  --modal-outline-bg: #f4fdfb;
 }
 
 #app.theme-gaming {
-  --bg-main: #2A4454;
-  --header-bg: #4B5A69;
-  --card-cover: url('/assets/images/gamingThemeCart.svg');
-  --card-face: transparent; 
+  --bg-main: #2a4454;
+  --header-bg: #4b5a69;
+  --card-cover: url("/assets/images/gamingThemeCart.svg");
+  --card-face: transparent;
   --card-face-text: transparent;
   --score-bg: #ffffff;
   --modal-bg: #f2f7f9;
   --modal-text: #223f4f;
-  --modal-btn-color: #e00b58; 
-  --modal-btn-color-hover: #bd0a4b; 
-  --modal-btn-radius: 8px; 
+  --modal-btn-color: #e00b58;
+  --modal-btn-color-hover: #bd0a4b;
+  --modal-btn-radius: 8px;
   --modal-radius: 16px;
   --modal-outline-bg: transparent;
 }
@@ -52,7 +52,7 @@ $c-orange: #f38c35;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 body {
@@ -71,6 +71,7 @@ h1 {
 
 p {
   font-size: 1.2rem;
+  padding-right: 138px;
 }
 
 // ==========================================
@@ -191,7 +192,7 @@ p {
     z-index: 10;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
+    align-items: flex-start;
   }
 
   p {
@@ -209,10 +210,10 @@ p {
   }
 
   #btn-play {
-    align-self: center; 
-    width: 220px;       
-    height: 70px;       
-    background: url('/assets/images/play_button.svg') center/contain no-repeat;
+    align-self: center;
+    width: 220px;
+    height: 70px;
+    background: url("/assets/images/play_button.svg") center/contain no-repeat;
     background-color: transparent;
     border: none;
     padding: 0;
@@ -220,14 +221,15 @@ p {
     transition: transform 0.2s ease;
     color: transparent;
     font-size: 0;
-    
+
     strong {
       display: none;
     }
 
     &:hover {
-      background: url('/assets/images/play-button_hover.svg') center/contain no-repeat;
-      transform: scale(1.03); 
+      background: url("/assets/images/play-button_hover.svg") center/contain
+        no-repeat;
+      transform: scale(1.03);
     }
   }
 
@@ -273,7 +275,8 @@ p {
         bottom: -15px;
         width: 130%;
         height: 18px;
-        background: url('/assets/images/lineLeft.svg') left center/contain no-repeat;
+        background: url("/assets/images/lineLeft.svg") left center/contain
+          no-repeat;
       }
     }
   }
@@ -300,9 +303,15 @@ p {
       }
     }
 
-    &:nth-of-type(1) h3::before { background-image: url('/assets/images/palette.svg'); }
-    &:nth-of-type(2) h3::before { background-image: url('/assets/images/choosePlayer.svg'); }
-    &:nth-of-type(3) h3::before { background-image: url('/assets/images/boardSize.svg'); }
+    &:nth-of-type(1) h3::before {
+      background-image: url("/assets/images/palette.svg");
+    }
+    &:nth-of-type(2) h3::before {
+      background-image: url("/assets/images/choosePlayer.svg");
+    }
+    &:nth-of-type(3) h3::before {
+      background-image: url("/assets/images/boardSize.svg");
+    }
 
     .setting-options {
       li {
@@ -348,13 +357,14 @@ p {
         &:has(input:checked) {
           font-weight: 600;
           color: #2b2b2b;
-          
+
           &::after {
             content: "";
             display: block;
-            width: 50px; 
-            height: 16px; 
-            background: url('/assets/images/Line%203.svg') left center/contain no-repeat;
+            width: 50px;
+            height: 16px;
+            background: url("/assets/images/Line%203.svg") left center/contain
+              no-repeat;
             margin-left: 10px;
           }
         }
@@ -373,7 +383,7 @@ p {
   .preview-box {
     width: 100%;
     max-width: 550px;
-    aspect-ratio: 4/3; 
+    aspect-ratio: 4/3;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
@@ -384,15 +394,17 @@ p {
     background-position: center;
     background-repeat: no-repeat;
 
-    .preview-cards { display: none; }
+    .preview-cards {
+      display: none;
+    }
   }
 
   #app.theme-code-vibes & .preview-box {
-    background-image: url('/assets/images/codeVideGame.svg');
+    background-image: url("/assets/images/codeVideGame.svg");
   }
 
   #app.theme-gaming & .preview-box {
-    background-image: url('/assets/images/gamingTheme.svg');
+    background-image: url("/assets/images/gamingTheme.svg");
   }
 
   .settings-summary-bar {
@@ -413,13 +425,13 @@ p {
       font-size: 1.15rem;
       color: #2b2b2b;
       margin: 0;
-      
+
       strong {
         color: transparent;
         font-size: 0;
         width: 18px;
         height: 35px;
-        background: url('/assets/images/Line%206.svg') center/contain no-repeat;
+        background: url("/assets/images/Line%206.svg") center/contain no-repeat;
         display: inline-block;
       }
     }
@@ -427,7 +439,8 @@ p {
     #btn-start {
       width: 130px;
       height: 50px;
-      background: url('/assets/images/startButton.svg') right center/contain no-repeat;
+      background: url("/assets/images/startButton.svg") right center/contain
+        no-repeat;
       background-color: transparent;
       border: none;
       padding: 0;
@@ -436,7 +449,9 @@ p {
       cursor: pointer;
       transition: transform 0.2s ease;
 
-      &:hover { transform: scale(1.15); }
+      &:hover {
+        transform: scale(1.15);
+      }
     }
   }
 }
@@ -451,12 +466,12 @@ p {
   .game-header {
     width: 100%;
     max-width: 1440px;
-    margin: 0 auto ;
+    margin: 0 auto;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--header-bg); 
+    background: var(--header-bg);
     border-radius: 12px;
   }
 
@@ -475,10 +490,16 @@ p {
       font-size: 1.5rem;
       font-weight: 700;
 
-      &.blue span { color: var(--c-blue); }
-      &.orange span { color: var(--c-orange); }
+      &.blue span {
+        color: var(--c-blue);
+      }
+      &.orange span {
+        color: var(--c-orange);
+      }
 
-      img { width: 22px; }
+      img {
+        width: 22px;
+      }
     }
   }
 
@@ -498,7 +519,7 @@ p {
       border-radius: 6px;
       vertical-align: middle;
       transition: background-color 0.3s;
-      
+
       img {
         width: 20px;
         height: 20px;
@@ -520,7 +541,8 @@ p {
 #app:not(.theme-gaming) #btn-exit {
   width: 140px;
   height: 40px;
-  background: url('/assets/images/codeVives%20Exit.svg') center/contain no-repeat;
+  background: url("/assets/images/codeVives%20Exit.svg") center/contain
+    no-repeat;
   border: none;
   color: transparent;
   font-size: 0;
@@ -528,7 +550,8 @@ p {
   cursor: pointer;
 
   &:hover {
-    background: url('/assets/images/codeVibesExitHover.svg') center/contain no-repeat;
+    background: url("/assets/images/codeVibesExitHover.svg") center/contain
+      no-repeat;
   }
 }
 
@@ -536,7 +559,7 @@ p {
 #app.theme-gaming #btn-exit {
   width: 140px;
   height: 40px;
-  background: url('/assets/images/gamesThemeExit.svg') center/contain no-repeat;
+  background: url("/assets/images/gamesThemeExit.svg") center/contain no-repeat;
   border: none;
   color: transparent;
   font-size: 0;
@@ -544,7 +567,8 @@ p {
   cursor: pointer;
 
   &:hover {
-    background: url('/assets/images/gamesThemeExitHover.svg') center/contain no-repeat;
+    background: url("/assets/images/gamesThemeExitHover.svg") center/contain
+      no-repeat;
   }
 }
 
@@ -554,25 +578,34 @@ p {
 #board {
   display: grid;
   perspective: 1000px;
-  justify-content: center; 
+  justify-content: center;
   margin: 0 auto;
 
   &.size-16 {
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px; 
-    .card { width: 90px; height: 105px; }
+    gap: 8px;
+    .card {
+      width: 90px;
+      height: 105px;
+    }
   }
 
   &.size-24 {
     grid-template-columns: repeat(6, 1fr);
     gap: 5px;
-    .card { width: 80px; height: 95px; }
+    .card {
+      width: 80px;
+      height: 95px;
+    }
   }
 
   &.size-64 {
     grid-template-columns: repeat(8, 1fr);
     gap: 4px;
-    .card { width: 55px; height: 65px; }
+    .card {
+      width: 55px;
+      height: 65px;
+    }
   }
 }
 
@@ -599,10 +632,10 @@ p {
 
   &__face {
     position: absolute;
-    top: 0;       
-    left: 0;      
-    width: 100%;  
-    height: 100%; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     backface-visibility: hidden;
     border-radius: 8px;
     display: flex;
@@ -613,18 +646,18 @@ p {
       background: var(--card-cover);
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 100% 100%; 
+      background-size: 100% 100%;
     }
 
     &--content {
       transform: rotateY(180deg);
-      background: var(--card-face); 
+      background: var(--card-face);
       color: var(--card-face-text);
 
       img {
         width: 100%;
         height: 100%;
-        object-fit: contain; 
+        object-fit: contain;
       }
     }
   }
@@ -636,7 +669,7 @@ p {
 .modal-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7); // Λίγο πιο σκούρο background για έμφαση
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -656,8 +689,8 @@ p {
     padding: 50px 70px;
     border-radius: var(--modal-radius);
     text-align: center;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15); // Ελαφριά σκιά
-    
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+
     h3 {
       font-size: 2.1rem;
       margin-bottom: 35px;
@@ -688,69 +721,104 @@ p {
   .final-score-pill {
     display: inline-flex;
     align-items: center;
-    gap: 40px; // Μεγάλο κενό ανάμεσα στους 2 παίκτες (όπως στην εικόνα)
+    gap: 40px;
     background: var(--score-bg);
     padding: 12px 30px;
     border-radius: 4px;
     font-size: 1.2rem;
 
-    // Στυλιζάρισμα για τα στοιχεία που γίνονται copy-paste από το JS
     .score-player {
       display: flex;
       align-items: center;
-      gap: 10px; // Κενό μεταξύ σημαίας και κειμένου
+      gap: 10px;
       font-weight: 700;
 
-      &.blue span { color: var(--c-blue); }
-      &.orange span { color: var(--c-orange); }
+      &.blue span {
+        color: var(--c-blue);
+      }
+      &.orange span {
+        color: var(--c-orange);
+      }
 
-      img { width: 24px; }
+      img {
+        width: 24px;
+      }
     }
   }
 }
 
-// === OVERRIDES ΑΠΟΚΛΕΙΣΤΙΚΑ ΓΙΑ ΤΟ CODE VIBES THEME ===
 #app.theme-code-vibes #screen-game-over {
   .game-over-title {
-    color: #4DD5BC; 
-    text-shadow: 
-      1px 1px 0 rgba(0,0,0,0.6),
-      2px 2px 0 rgba(0,0,0,0.6),
-      3px 3px 0 rgba(0,0,0,0.6),
-      4px 4px 0 rgba(0,0,0,0.6),
-      5px 5px 6px rgba(0,0,0,0.4);
+    color: #4dd5bc;
+    text-shadow:
+      1px 1px 0 rgba(0, 0, 0, 0.6),
+      2px 2px 0 rgba(0, 0, 0, 0.6),
+      3px 3px 0 rgba(0, 0, 0, 0.6),
+      4px 4px 0 rgba(0, 0, 0, 0.6),
+      5px 5px 6px rgba(0, 0, 0, 0.4);
     letter-spacing: 2px;
   }
 }
 
 #app.theme-gaming #screen-game-over {
   .game-over-title {
-    color: #ffffff; 
-    text-shadow: none; 
+    color: #ffffff;
+    text-shadow: none;
   }
 }
 
 #screen-winner {
+  .winner-text {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    color: var(--text-main);
+    padding-left: 143px;
+  }
+
   .winner-name {
-    font-size: 3.5rem;
-    font-weight: bold;
-    margin-bottom: 40px;
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 30px;
     text-transform: uppercase;
-    color: var(--c-orange);
   }
 
   .winner-icon-box {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-height: 100%;
+      width: auto;
+    }
   }
 }
 
-footer {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
-  font-size: 0.9rem;
-  opacity: 0.7;
+#app.theme-code-vibes #screen-winner {
+  background-image: url("/assets/images/Confetti.svg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
 
-  a { color: inherit; }
+  #btn-home {
+    width: 200px;
+    height: 60px;
+    background: url("/assets/images/secondary%20button.svg") center/contain
+      no-repeat;
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    font-size: 0;
+    padding: 0;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      filter 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 }
