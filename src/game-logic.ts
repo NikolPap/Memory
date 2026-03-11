@@ -137,17 +137,14 @@ function resetTurnState(): void {
 export function updateScoreUI(): void {
   const display = getElement("score-display");
   const icon = getElement("turn-icon");
-  
-  // Επιλογή εικονιδίων με βάση το theme
   const blueIcon = STATE.theme === "gaming" 
-    ? "./public/assets/images/chess_pawn_blue.svg" 
-    : "./public/assets/images/blueFlag.svg";
+    ? "./assets/images/chess_pawn_blue.svg" 
+    : "./assets/images/blueFlag.svg";
     
   const orangeIcon = STATE.theme === "gaming" 
-    ? "./public/assets/images/chess_pawn_orange.svg" 
-    : "./public/assets/images/orange_flag.svg";
+    ? "./assets/images/chess_pawn_orange.svg" 
+    : "./assets/images/orange_flag.svg";
 
-  // Κοινό layout για τα scores
   display.innerHTML = `
     <div class="score-player blue">
       <img src="${blueIcon}" alt="Blue Player">
@@ -159,12 +156,10 @@ export function updateScoreUI(): void {
     </div>
   `;
 
-  // Λογική Current Turn 
   if (STATE.theme === "gaming") {
-    icon.innerHTML = `<img src="./public/assets/images/chess_pawn.svg" alt="Turn icon">`;
+    icon.innerHTML = `<img src="./assets/images/chess_pawn.svg" alt="Turn icon">`;
     icon.style.backgroundColor = `var(--c-${STATE.currentPlayer})`;
   } else {
-    // Στο Code Vibes: Μόνο η σημαία του παίκτη που παίζει, χωρίς φόντο (transparent)
     const currentFlag = STATE.currentPlayer === "blue" ? blueIcon : orangeIcon;
     icon.innerHTML = `<img src="${currentFlag}" alt="Turn icon">`;
     icon.style.backgroundColor = "transparent";

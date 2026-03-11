@@ -14,7 +14,7 @@ $c-orange: #f38c35;
   --bg-main: #303131;
   --header-bg: transparent;
   --text-main: #{$c-white};
-  --card-cover: url('/public/assets/images/codeVibesCart.svg');
+  --card-cover: url('/assets/images/codeVibesCart.svg');
   --card-face: transparent;
   --card-face-text: transparent;
   --score-bg: #40575d;
@@ -32,7 +32,7 @@ $c-orange: #f38c35;
 #app.theme-gaming {
   --bg-main: #2A4454;
   --header-bg: #4B5A69;
-  --card-cover: url('/public/assets/images/gamingThemeCart.svg');
+  --card-cover: url('/assets/images/gamingThemeCart.svg');
   --card-face: transparent; 
   --card-face-text: transparent;
   --score-bg: #ffffff;
@@ -212,7 +212,7 @@ p {
     align-self: center; 
     width: 220px;       
     height: 70px;       
-    background: url('/public/assets/images/play_button.svg') center/contain no-repeat;
+    background: url('/assets/images/play_button.svg') center/contain no-repeat;
     background-color: transparent;
     border: none;
     padding: 0;
@@ -226,7 +226,7 @@ p {
     }
 
     &:hover {
-      background: url('/public/assets/images/play-button_hover.svg') center/contain no-repeat;
+      background: url('/assets/images/play-button_hover.svg') center/contain no-repeat;
       transform: scale(1.03); 
     }
   }
@@ -273,7 +273,7 @@ p {
         bottom: -15px;
         width: 130%;
         height: 18px;
-        background: url('/public/assets/images/lineLeft.svg') left center/contain no-repeat;
+        background: url('/assets/images/lineLeft.svg') left center/contain no-repeat;
       }
     }
   }
@@ -300,9 +300,9 @@ p {
       }
     }
 
-    &:nth-of-type(1) h3::before { background-image: url('/public/assets/images/palette.svg'); }
-    &:nth-of-type(2) h3::before { background-image: url('/public/assets/images/choosePlayer.svg'); }
-    &:nth-of-type(3) h3::before { background-image: url('/public/assets/images/boardSize.svg'); }
+    &:nth-of-type(1) h3::before { background-image: url('/assets/images/palette.svg'); }
+    &:nth-of-type(2) h3::before { background-image: url('/assets/images/choosePlayer.svg'); }
+    &:nth-of-type(3) h3::before { background-image: url('/assets/images/boardSize.svg'); }
 
     .setting-options {
       li {
@@ -354,7 +354,7 @@ p {
             display: block;
             width: 50px; 
             height: 16px; 
-            background: url('/public/assets/images/Line%203.svg') left center/contain no-repeat;
+            background: url('/assets/images/Line%203.svg') left center/contain no-repeat;
             margin-left: 10px;
           }
         }
@@ -388,11 +388,11 @@ p {
   }
 
   #app.theme-code-vibes & .preview-box {
-    background-image: url('/public/assets/images/codeVideGame.svg');
+    background-image: url('/assets/images/codeVideGame.svg');
   }
 
   #app.theme-gaming & .preview-box {
-    background-image: url('/public/assets/images/gamingTheme.svg');
+    background-image: url('/assets/images/gamingTheme.svg');
   }
 
   .settings-summary-bar {
@@ -419,7 +419,7 @@ p {
         font-size: 0;
         width: 18px;
         height: 35px;
-        background: url('/public/assets/images/Line%206.svg') center/contain no-repeat;
+        background: url('/assets/images/Line%206.svg') center/contain no-repeat;
         display: inline-block;
       }
     }
@@ -427,7 +427,7 @@ p {
     #btn-start {
       width: 130px;
       height: 50px;
-      background: url('/public/assets/images/startButton.svg') right center/contain no-repeat;
+      background: url('/assets/images/startButton.svg') right center/contain no-repeat;
       background-color: transparent;
       border: none;
       padding: 0;
@@ -520,7 +520,7 @@ p {
 #app:not(.theme-gaming) #btn-exit {
   width: 140px;
   height: 40px;
-  background: url('/public/assets/images/codeVives%20Exit.svg') center/contain no-repeat;
+  background: url('/assets/images/codeVives%20Exit.svg') center/contain no-repeat;
   border: none;
   color: transparent;
   font-size: 0;
@@ -528,7 +528,7 @@ p {
   cursor: pointer;
 
   &:hover {
-    background: url('/public/assets/images/codeVibesExitHover.svg') center/contain no-repeat;
+    background: url('/assets/images/codeVibesExitHover.svg') center/contain no-repeat;
   }
 }
 
@@ -536,7 +536,7 @@ p {
 #app.theme-gaming #btn-exit {
   width: 140px;
   height: 40px;
-  background: url('/public/assets/images/gamesThemeExit.svg') center/contain no-repeat;
+  background: url('/assets/images/gamesThemeExit.svg') center/contain no-repeat;
   border: none;
   color: transparent;
   font-size: 0;
@@ -544,7 +544,7 @@ p {
   cursor: pointer;
 
   &:hover {
-    background: url('/public/assets/images/gamesThemeExitHover.svg') center/contain no-repeat;
+    background: url('/assets/images/gamesThemeExitHover.svg') center/contain no-repeat;
   }
 }
 
