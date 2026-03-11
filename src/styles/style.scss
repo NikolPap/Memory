@@ -676,18 +676,57 @@ p {
   .game-over-title {
     font-size: 7rem;
     font-weight: 900;
-    color: var(--card-cover);
     margin-bottom: 1rem;
+  }
+
+  .final-score-text {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
   }
 
   .final-score-pill {
     display: inline-flex;
     align-items: center;
-    gap: 20px;
+    gap: 40px; // Μεγάλο κενό ανάμεσα στους 2 παίκτες (όπως στην εικόνα)
     background: var(--score-bg);
     padding: 12px 30px;
     border-radius: 4px;
     font-size: 1.2rem;
+
+    // Στυλιζάρισμα για τα στοιχεία που γίνονται copy-paste από το JS
+    .score-player {
+      display: flex;
+      align-items: center;
+      gap: 10px; // Κενό μεταξύ σημαίας και κειμένου
+      font-weight: 700;
+
+      &.blue span { color: var(--c-blue); }
+      &.orange span { color: var(--c-orange); }
+
+      img { width: 24px; }
+    }
+  }
+}
+
+// === OVERRIDES ΑΠΟΚΛΕΙΣΤΙΚΑ ΓΙΑ ΤΟ CODE VIBES THEME ===
+#app.theme-code-vibes #screen-game-over {
+  .game-over-title {
+    color: #4DD5BC; 
+    text-shadow: 
+      1px 1px 0 rgba(0,0,0,0.6),
+      2px 2px 0 rgba(0,0,0,0.6),
+      3px 3px 0 rgba(0,0,0,0.6),
+      4px 4px 0 rgba(0,0,0,0.6),
+      5px 5px 6px rgba(0,0,0,0.4);
+    letter-spacing: 2px;
+  }
+}
+
+#app.theme-gaming #screen-game-over {
+  .game-over-title {
+    color: #ffffff; 
+    text-shadow: none; 
   }
 }
 

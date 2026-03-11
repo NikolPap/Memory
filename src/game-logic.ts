@@ -144,15 +144,14 @@ export function updateScoreUI(): void {
   const orangeIcon = STATE.theme === "gaming" 
     ? "./assets/images/chess_pawn_orange.svg" 
     : "./assets/images/orange_flag.svg";
-
   display.innerHTML = `
     <div class="score-player blue">
       <img src="${blueIcon}" alt="Blue Player">
-      <span>${STATE.scores.blue}</span>
+      <span>Blue ${STATE.scores.blue}</span>
     </div>
     <div class="score-player orange">
       <img src="${orangeIcon}" alt="Orange Player">
-      <span>${STATE.scores.orange}</span>
+      <span>Orange ${STATE.scores.orange}</span>
     </div>
   `;
 
