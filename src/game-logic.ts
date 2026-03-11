@@ -178,7 +178,27 @@ function checkWinCondition(): void {
 function triggerGameOver(): void {
   switchScreen("screen-game-over");
   const finalScoreEl = getElement("final-score");
-  finalScoreEl.innerHTML = getElement("score-display").innerHTML;
+  
+  // Έλεγχος του theme για το τι θα εμφανιστεί στο Final Score
+  if (STATE.theme === "gaming") {
+    // Στο Gaming Theme εμφανίζουμε μόνο εικονίδιο και το σκορ (αριθμό)
+    const blueIcon = "./assets/images/chess_pawn_blue.svg";
+    const orangeIcon = "./assets/images/chess_pawn_orange.svg";
+    
+    finalScoreEl.innerHTML = `
+      <div class="score-player blue">
+        <img src="${blueIcon}" alt="Blue Player">
+        <span>${STATE.scores.blue}</span>
+      </div>
+      <div class="score-player orange">
+        <img src="${orangeIcon}" alt="Orange Player">
+        <span>${STATE.scores.orange}</span>
+      </div>
+    `;
+  } else {
+    // Στο Code Vibes Theme αντιγράφουμε κανονικά το HTML του Header (κρατάει τα ονόματα)
+    finalScoreEl.innerHTML = getElement("score-display").innerHTML;
+  }
   
   setTimeout(() => {
     displayWinner();
@@ -200,6 +220,7 @@ function displayWinner(): void {
     const winner = diff > 0 ? "blue" : "orange";
     nameEl.textContent = `${winner.toUpperCase()} PLAYER`;
     nameEl.style.color = `var(--c-${winner})`;
+    
     if (STATE.theme === "code-vibes") {
       const iconSrc = winner === "blue" 
         ? "./assets/images/PlayerBlue.svg" 
@@ -207,7 +228,7 @@ function displayWinner(): void {
         
       iconBox.innerHTML = `<img src="${iconSrc}" alt="${winner} player pawn">`;
     } else {
-      
+      iconBox.innerHTML = `<img src="./assets/images/pockal.svg" alt="Winner Trophy">`;
     }
   }
 }

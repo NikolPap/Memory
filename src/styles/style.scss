@@ -716,6 +716,8 @@ p {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--text-main);
+    padding: 0; // Διορθώνει το κεντράρισμα αναιρώντας το global padding
+    text-align: center;
   }
 
   .final-score-pill {
@@ -762,7 +764,7 @@ p {
 
 #app.theme-gaming #screen-game-over {
   .game-over-title {
-    color: #ffffff;
+    color: #ED1B76;
     text-shadow: none;
   }
 }
@@ -772,7 +774,7 @@ p {
     font-size: 1.8rem;
     margin-top: 3rem;
     color: var(--text-main);
-    padding-left: 143px;
+    padding: 0; 
   }
 
   .winner-name {
@@ -819,6 +821,35 @@ p {
 
     &:hover {
       transform: scale(1.05);
+    }
+  }
+}
+
+#app.theme-gaming #screen-winner {
+
+  .winner-text {
+    font-size: 1.5rem; 
+  }
+  
+  .winner-name {
+    font-size: 3.2rem;
+  }
+
+  #btn-home {
+    width: 160px;
+    height: 50px;
+    background: url("/assets/images/backButton.svg") center/contain no-repeat;
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    font-size: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1); 
     }
   }
 }
