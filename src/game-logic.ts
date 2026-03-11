@@ -178,10 +178,7 @@ function checkWinCondition(): void {
 function triggerGameOver(): void {
   switchScreen("screen-game-over");
   const finalScoreEl = getElement("final-score");
-  
-  // Έλεγχος του theme για το τι θα εμφανιστεί στο Final Score
   if (STATE.theme === "gaming") {
-    // Στο Gaming Theme εμφανίζουμε μόνο εικονίδιο και το σκορ (αριθμό)
     const blueIcon = "./assets/images/chess_pawn_blue.svg";
     const orangeIcon = "./assets/images/chess_pawn_orange.svg";
     
