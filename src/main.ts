@@ -64,16 +64,30 @@ function cancelExit(): void {
   getElement("quit-modal").classList.remove("active");
 }
 
-/** Performs the application reset after an exit confirmation. */
+
+function resetToDefaultSettings(): void {
+  const defaultTheme = document.querySelector('input[name="theme"][value="code-vibes"]') as HTMLInputElement;
+  const defaultPlayer = document.querySelector('input[name="player"][value="blue"]') as HTMLInputElement;
+  const defaultSize = document.querySelector('input[name="size"][value="16"]') as HTMLInputElement;
+
+  if (defaultTheme) defaultTheme.checked = true;
+  if (defaultPlayer) defaultPlayer.checked = true;
+  if (defaultSize) defaultSize.checked = true;
+  syncSettingsUI();
+}
+
+/** Resets the radio buttons and the theme to their default values (Code Vibes, etc.). */
 function confirmExit(): void {
   cancelExit();
+  resetToDefaultSettings(); 
   switchScreen("screen-start");
 }
 
 /** Returns the user to the start screen. */
 function goHome(): void {
+  resetToDefaultSettings(); 
   switchScreen("screen-start");
 }
 
-// Bootstrap
+
 document.addEventListener("DOMContentLoaded", initEvents);
