@@ -137,6 +137,7 @@ function resetTurnState(): void {
 export function updateScoreUI(): void {
   const display = getElement("score-display");
   const icon = getElement("turn-icon");
+  
   const blueIcon = STATE.theme === "gaming" 
     ? "./assets/images/chess_pawn_blue.svg" 
     : "./assets/images/blueFlag.svg";
@@ -144,14 +145,16 @@ export function updateScoreUI(): void {
   const orangeIcon = STATE.theme === "gaming" 
     ? "./assets/images/chess_pawn_orange.svg" 
     : "./assets/images/orange_flag.svg";
+  const isGaming = STATE.theme === "gaming";
+
   display.innerHTML = `
     <div class="score-player blue">
       <img src="${blueIcon}" alt="Blue Player">
-      <span>Blue ${STATE.scores.blue}</span>
+      <span>${isGaming ? STATE.scores.blue : `Blue ${STATE.scores.blue}`}</span>
     </div>
     <div class="score-player orange">
       <img src="${orangeIcon}" alt="Orange Player">
-      <span>Orange ${STATE.scores.orange}</span>
+      <span>${isGaming ? STATE.scores.orange : `Orange ${STATE.scores.orange}`}</span>
     </div>
   `;
 
@@ -210,12 +213,18 @@ function displayWinner(): void {
   const diff = STATE.scores.blue - STATE.scores.orange;
   
   if (diff === 0) {
-    nameEl.textContent = "IT'S A TIE";
+    nameEl.textContent = STATE.theme === "gaming" ? "It's a tie" : "IT'S A TIE";
     nameEl.style.color = "var(--text-main)";
     iconBox.innerHTML = ""; 
   } else {
     const winner = diff > 0 ? "blue" : "orange";
-    nameEl.textContent = `${winner.toUpperCase()} PLAYER`;
+    if (STATE.theme === "gaming") {
+      const capitalizedWinner = winner.charAt(0).toUpperCase() + winner.slice(1);
+      nameEl.textContent = `${capitalizedWinner} Player`;
+    } else {
+      nameEl.textContent = `${winner.toUpperCase()} PLAYER`;
+    }
+    
     nameEl.style.color = `var(--c-${winner})`;
     
     if (STATE.theme === "code-vibes") {
