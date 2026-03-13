@@ -1,0 +1,57 @@
+@use "../abstracts/variables" as *;
+
+// ==========================================
+// CSS VARIABLES (Dynamic Theme Colors)
+// ==========================================
+:root {
+  --bg-main: #303131;
+  --header-bg: transparent;
+  --text-main: #{$c-white};
+  --card-cover: url("/assets/images/codeVibesCart.svg");
+  --card-face: transparent;
+  --card-face-text: transparent;
+  --card-radius: 0; 
+  --card-overflow: visible;
+  --card-width: 120px;
+  --card-height: 120px;
+  --score-bg: #40575d;
+  --c-blue: #3db2e3;
+  --c-orange: #f38c35;
+  --modal-bg: #ffffff;
+  --modal-text: #333333;
+  --modal-btn-color: #60cbb2;
+  --modal-btn-color-hover: #4bb39b;
+  --modal-btn-radius: 2px;
+  --modal-radius: 8px;
+  --modal-outline-bg: #f4fdfb;
+}
+
+#app.theme-gaming {
+  --bg-main: #2a4454;
+  --header-bg: #4b5a69;
+  --card-cover: url("/assets/images/gamingThemeCart.svg");
+  
+  --card-face: #ffffff; 
+  --card-face-text: transparent;
+  --card-radius: 0.75rem; 
+  --card-overflow: hidden;
+  --card-width: 105px;
+  --card-height: 120px;
+  
+  --score-bg: #ffffff;
+  --modal-bg: #f2f7f9;
+  --modal-text: #223f4f;
+  --modal-btn-color: #e00b58;
+  --modal-btn-color-hover: #bd0a4b;
+  --modal-btn-radius: 8px;
+  --modal-radius: 16px;
+  --modal-outline-bg: transparent;
+
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.07em;
+
+  * {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.07em;
+  }
+}
