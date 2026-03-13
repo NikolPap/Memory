@@ -1,0 +1,27 @@
+@use "../abstracts/mixins" as *;
+
+// ==========================================
+// MAIN APP LAYOUT
+// ==========================================
+#app {
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-main);
+  color: var(--text-main);
+  @include flex-column;
+  transition: background 0.3s;
+  position: relative;
+}
+
+.screen {
+  @include absolute-cover;
+  @include flex-column;
+  align-items: center;
+  justify-content: center;
+  display: none;
+
+  &.active {
+    display: flex;
+    height: 100vh;
+  }
+}

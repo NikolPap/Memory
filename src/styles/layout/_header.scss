@@ -1,0 +1,58 @@
+@use "../abstracts/mixins" as *;
+
+// ==========================================
+// GAME HEADER
+// ==========================================
+.game-header {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--header-bg);
+  border-radius: 12px;
+}
+
+.score-pill {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--score-bg);
+  padding: 3px 24px;
+  border-radius: 8px;
+
+  .score-player {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    &.blue span { color: var(--c-blue); }
+    &.orange span { color: var(--c-orange); }
+
+    img { width: 22px; }
+  }
+}
+
+.current-turn {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  .turn-indicator {
+    @include flex-center;
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    vertical-align: middle;
+    transition: background-color 0.3s;
+
+    img { width: 20px; height: 20px; }
+  }
+}
