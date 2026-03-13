@@ -1,0 +1,34 @@
+// ==========================================
+// MIXINS
+// ==========================================
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin absolute-cover {
+  position: absolute;
+  inset: 0;
+}
+
+@mixin bg-contain {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin btn-invisible {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: transparent;
+  font-size: 0;
+  cursor: pointer;
+}
