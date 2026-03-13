@@ -61,8 +61,6 @@ function renderBoard(): void {
 function setupCard(article: HTMLElement, card: CardData, idx: number): void {
   const content = article.querySelector(".card__face--content") as HTMLElement;
   const btn = article.querySelector("button") as HTMLButtonElement;
-  
-  // Και τα δύο themes χρησιμοποιούν εικόνες πλέον
   content.innerHTML = `<img src="${card.value}" alt="card image" />`;
   
   article.dataset.index = idx.toString();
@@ -133,39 +131,44 @@ function resetTurnState(): void {
   STATE.isLocked = false;
 }
 
-/** Updates the header UI displaying player scores and current turn. */
-export function updateScoreUI(): void {
-  const display = getElement("score-display");
-  const icon = getElement("turn-icon");
+/** Returns the correct icons depending on whether the theme is gaming. */
+function getPlayerIcons(isGaming: boolean) {
+  return {
+    blueIcon: isGaming ? "./assets/images/chess_pawn_blue.svg" : "./assets/images/blueFlag.svg",
+    orangeIcon: isGaming ? "./assets/images/chess_pawn_orange.svg" : "./assets/images/orange_flag.svg"
+  };
+}
+
+/** Updates the HTML of the score display. */
+function renderScoreDisplay(isGaming: boolean, blueIcon: string, orangeIcon: string): void {
+  const bScore = isGaming ? STATE.scores.blue : `Blue ${STATE.scores.blue}`;
+  const oScore = isGaming ? STATE.scores.orange : `Orange ${STATE.scores.orange}`;
   
-  const blueIcon = STATE.theme === "gaming" 
-    ? "./assets/images/chess_pawn_blue.svg" 
-    : "./assets/images/blueFlag.svg";
-    
-  const orangeIcon = STATE.theme === "gaming" 
-    ? "./assets/images/chess_pawn_orange.svg" 
-    : "./assets/images/orange_flag.svg";
-  const isGaming = STATE.theme === "gaming";
-
-  display.innerHTML = `
-    <div class="score-player blue">
-      <img src="${blueIcon}" alt="Blue Player">
-      <span>${isGaming ? STATE.scores.blue : `Blue ${STATE.scores.blue}`}</span>
-    </div>
-    <div class="score-player orange">
-      <img src="${orangeIcon}" alt="Orange Player">
-      <span>${isGaming ? STATE.scores.orange : `Orange ${STATE.scores.orange}`}</span>
-    </div>
+  getElement("score-display").innerHTML = `
+    <div class="score-player blue"><img src="${blueIcon}" alt="Blue"><span>${bScore}</span></div>
+    <div class="score-player orange"><img src="${orangeIcon}" alt="Orange"><span>${oScore}</span></div>
   `;
+}
 
-  if (STATE.theme === "gaming") {
+/** Updates the turn icon for the current player. */
+function updateTurnIcon(isGaming: boolean, blueIcon: string, orangeIcon: string): void {
+  const icon = getElement("turn-icon");
+  if (isGaming) {
     icon.innerHTML = `<img src="./assets/images/chess_pawn.svg" alt="Turn icon">`;
     icon.style.backgroundColor = `var(--c-${STATE.currentPlayer})`;
   } else {
-    const currentFlag = STATE.currentPlayer === "blue" ? blueIcon : orangeIcon;
-    icon.innerHTML = `<img src="${currentFlag}" alt="Turn icon">`;
+    icon.innerHTML = `<img src="${STATE.currentPlayer === "blue" ? blueIcon : orangeIcon}" alt="Turn icon">`;
     icon.style.backgroundColor = "transparent";
   }
+}
+
+/** Main function that calls the helpers to update the score UI. */
+export function updateScoreUI(): void {
+  const isGaming = STATE.theme === "gaming";
+  const { blueIcon, orangeIcon } = getPlayerIcons(isGaming);
+  
+  renderScoreDisplay(isGaming, blueIcon, orangeIcon);
+  updateTurnIcon(isGaming, blueIcon, orangeIcon);
 }
 
 /** Triggers the game over sequence if all pairs are matched. */
@@ -176,29 +179,23 @@ function checkWinCondition(): void {
     resetTurnState();
   }
 }
+/** Renders the final score display based on the current theme. */
+function renderFinalScore(): void {
+  const finalScoreEl = getElement("final-score");
+  if (STATE.theme === "gaming") {
+    finalScoreEl.innerHTML = `
+      <div class="score-player blue"><img src="./assets/images/chess_pawn_blue.svg" alt="Blue"><span>${STATE.scores.blue}</span></div>
+      <div class="score-player orange"><img src="./assets/images/chess_pawn_orange.svg" alt="Orange"><span>${STATE.scores.orange}</span></div>
+    `;
+  } else {
+    finalScoreEl.innerHTML = getElement("score-display").innerHTML;
+  }
+}
 
 /** Executes the transition logic for the final game screen. */
 function triggerGameOver(): void {
   switchScreen("screen-game-over");
-  const finalScoreEl = getElement("final-score");
-  if (STATE.theme === "gaming") {
-    const blueIcon = "./assets/images/chess_pawn_blue.svg";
-    const orangeIcon = "./assets/images/chess_pawn_orange.svg";
-    
-    finalScoreEl.innerHTML = `
-      <div class="score-player blue">
-        <img src="${blueIcon}" alt="Blue Player">
-        <span>${STATE.scores.blue}</span>
-      </div>
-      <div class="score-player orange">
-        <img src="${orangeIcon}" alt="Orange Player">
-        <span>${STATE.scores.orange}</span>
-      </div>
-    `;
-  } else {
-    // Στο Code Vibes Theme αντιγράφουμε κανονικά το HTML του Header (κρατάει τα ονόματα)
-    finalScoreEl.innerHTML = getElement("score-display").innerHTML;
-  }
+  renderFinalScore();
   
   setTimeout(() => {
     displayWinner();
@@ -206,35 +203,33 @@ function triggerGameOver(): void {
   }, CONSTANTS.GAME_OVER_DELAY_MS);
 }
 
+/** Updates the UI elements for a tie game scenario. */
+function renderTie(nameEl: HTMLElement, iconBox: HTMLElement, isGaming: boolean): void {
+  nameEl.textContent = isGaming ? "It's a tie" : "IT'S A TIE";
+  nameEl.style.color = "var(--text-main)";
+  iconBox.innerHTML = ""; 
+}
+
+/** Updates the UI elements for the winning player. */
+function renderWinner(nameEl: HTMLElement, iconBox: HTMLElement, winner: "blue" | "orange", isGaming: boolean): void {
+  const winnerNameText = isGaming ? `${winner.charAt(0).toUpperCase() + winner.slice(1)} Player` : `${winner.toUpperCase()} PLAYER`;
+  const iconSrc = isGaming ? "./assets/images/pockal.svg" : `./assets/images/Player${winner === "blue" ? "Blue" : "Orange"}.svg`;
+  
+  nameEl.textContent = winnerNameText;
+  nameEl.style.color = `var(--c-${winner})`;
+  iconBox.innerHTML = `<img src="${iconSrc}" alt="Winner icon">`;
+}
+
 /** Determines the winner and populates the final screen. */
 function displayWinner(): void {
   const nameEl = getElement("winner-name");
   const iconBox = getElement("winner-icon"); 
   const diff = STATE.scores.blue - STATE.scores.orange;
+  const isGaming = STATE.theme === "gaming";
   
   if (diff === 0) {
-    nameEl.textContent = STATE.theme === "gaming" ? "It's a tie" : "IT'S A TIE";
-    nameEl.style.color = "var(--text-main)";
-    iconBox.innerHTML = ""; 
+    renderTie(nameEl, iconBox, isGaming);
   } else {
-    const winner = diff > 0 ? "blue" : "orange";
-    if (STATE.theme === "gaming") {
-      const capitalizedWinner = winner.charAt(0).toUpperCase() + winner.slice(1);
-      nameEl.textContent = `${capitalizedWinner} Player`;
-    } else {
-      nameEl.textContent = `${winner.toUpperCase()} PLAYER`;
-    }
-    
-    nameEl.style.color = `var(--c-${winner})`;
-    
-    if (STATE.theme === "code-vibes") {
-      const iconSrc = winner === "blue" 
-        ? "./assets/images/PlayerBlue.svg" 
-        : "./assets/images/PlayerOrange.svg";
-        
-      iconBox.innerHTML = `<img src="${iconSrc}" alt="${winner} player pawn">`;
-    } else {
-      iconBox.innerHTML = `<img src="./assets/images/pockal.svg" alt="Winner Trophy">`;
-    }
+    renderWinner(nameEl, iconBox, diff > 0 ? "blue" : "orange", isGaming);
   }
 }
