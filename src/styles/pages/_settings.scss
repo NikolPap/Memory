@@ -1,0 +1,191 @@
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// ==========================================
+// SETTINGS SCREEN
+// ==========================================
+#screen-settings {
+  background: $c-white;
+  color: $c-dark;
+
+  .settings-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .settings-left {
+    flex: 1;
+
+    h2 {
+      font-size: 54px;
+      color: #2b2b2b;
+      margin-bottom: 3.5rem;
+      position: relative;
+      display: inline-block;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 2px;
+        bottom: -15px;
+        width: 130%;
+        height: 18px;
+        background: url("/assets/images/lineLeft.svg") left center/contain no-repeat;
+      }
+    }
+  }
+
+  .setting-group {
+    margin-bottom: 2.5rem;
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.5rem;
+      color: #2b2b2b;
+      margin-bottom: 1.2rem;
+
+      &::before {
+        content: "";
+        display: block;
+        width: 28px;
+        height: 28px;
+        @include bg-contain;
+      }
+    }
+
+    &:nth-of-type(1) h3::before { background-image: url("/assets/images/palette.svg"); }
+    &:nth-of-type(2) h3::before { background-image: url("/assets/images/choosePlayer.svg"); }
+    &:nth-of-type(3) h3::before { background-image: url("/assets/images/boardSize.svg"); }
+
+    .setting-options {
+      li {
+        margin-bottom: 15px;
+        margin-left: 10px;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        cursor: pointer;
+        font-size: 1.25rem;
+        color: #4a4a4a;
+        position: relative;
+
+        input[type="radio"] {
+          appearance: none;
+          -webkit-appearance: none;
+          width: 22px;
+          height: 22px;
+          border: 2px solid #2b2b2b;
+          border-radius: 50%;
+          outline: none;
+          cursor: pointer;
+          margin: 0;
+          position: relative;
+          background-color: transparent;
+
+          &:checked::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background-color: #2b2b2b;
+            border-radius: 50%;
+          }
+        }
+
+        &:has(input:checked) {
+          font-weight: 600;
+          color: #2b2b2b;
+
+          &::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 16px;
+            background: url("/assets/images/Line%203.svg") left center/contain no-repeat;
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .settings-right {
+    flex: 1;
+    @include flex-center;
+    flex-direction: column;
+  }
+
+  .preview-box {
+    width: 100%;
+    max-width: 550px;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    @include flex-center;
+    flex-direction: column;
+    transition: background-image 0.3s ease;
+    @include bg-contain;
+
+    .preview-cards { display: none; }
+  }
+
+  // Theme overrides for settings preview
+  #app.theme-code-vibes & .preview-box { background-image: url("/assets/images/codeVideGame.svg"); }
+  #app.theme-gaming & .preview-box { background-image: url("/assets/images/gamingTheme.svg"); }
+
+  .settings-summary-bar {
+    background: #f5f6f8;
+    margin-top: 35px;
+    padding: 10px 15px 10px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 4px;
+
+    .summary-text {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 1.15rem;
+      color: #2b2b2b;
+      margin: 0;
+
+      strong {
+        color: transparent;
+        font-size: 0;
+        width: 18px;
+        height: 35px;
+        background: url("/assets/images/Line%206.svg") center/contain no-repeat;
+        display: inline-block;
+      }
+    }
+
+    #btn-start {
+      width: 130px;
+      height: 50px;
+      background-image: url("/assets/images/startButton.svg");
+      background-position: right center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      @include btn-invisible;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
+  }
+}

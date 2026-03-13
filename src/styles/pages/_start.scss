@@ -1,0 +1,56 @@
+@use "../abstracts/mixins" as *;
+
+// ==========================================
+// START SCREEN
+// ==========================================
+#screen-start {
+  position: relative;
+  overflow: hidden;
+
+  .content {
+    position: relative;
+    z-index: 10;
+    @include flex-column;
+    align-items: flex-start;
+  }
+
+  p {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+    color: var(--text-main);
+  }
+
+  h1 {
+    font-size: 6rem;
+    margin-bottom: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-main);
+  }
+
+  #btn-play {
+    align-self: center;
+    width: 220px;
+    height: 70px;
+    background-image: url("/assets/images/play_button.svg");
+    @include bg-contain;
+    @include btn-invisible;
+    transition: transform 0.2s ease;
+
+    strong { display: none; }
+
+    &:hover {
+      background-image: url("/assets/images/play-button_hover.svg");
+      transform: scale(1.03);
+    }
+  }
+
+  & > img {
+    position: absolute;
+    bottom: 0vh;
+    left: 0vw;
+    width: 414px;
+    z-index: 1;
+    pointer-events: none;
+  }
+}

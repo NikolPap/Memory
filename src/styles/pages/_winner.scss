@@ -1,0 +1,80 @@
+
+@use "../abstracts/mixins" as *;
+
+// ==========================================
+// WINNER SCREEN
+// ==========================================
+#screen-winner {
+  .winner-text {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    color: var(--text-main);
+    padding: 0; 
+  }
+
+  .winner-name {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+
+  .winner-icon-box {
+    margin-bottom: 40px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-height: 100%;
+      width: auto;
+    }
+  }
+}
+
+// Theme overrides for Winner Screen
+#app.theme-code-vibes #screen-winner {
+  background-image: url("/assets/images/Confetti.svg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+
+  #btn-home {
+    width: 200px;
+    height: 60px;
+    background-image: url("/assets/images/secondary%20button.svg");
+    @include bg-contain;
+    @include btn-invisible;
+    transition: transform 0.2s ease, filter 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+#app.theme-gaming #screen-winner {
+  .winner-text {
+    font-size: 1.5rem; 
+  }
+  
+  .winner-name {
+    font-size: 3.2rem;
+    text-transform: none; 
+  }
+
+  #btn-home {
+    width: 160px;
+    height: 50px;
+    background-image: url("/assets/images/backButton.svg");
+    @include bg-contain;
+    @include btn-invisible;
+    transition: transform 0.2s ease, filter 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1); 
+    }
+  }
+}

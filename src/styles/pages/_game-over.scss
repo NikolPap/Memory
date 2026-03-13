@@ -1,0 +1,62 @@
+// ==========================================
+// GAME OVER SCREEN
+// ==========================================
+#screen-game-over {
+  .game-over-title {
+    font-size: 7rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+
+  .final-score-text {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    padding: 0; 
+    text-align: center;
+  }
+
+  .final-score-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 40px;
+    background: var(--score-bg);
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-size: 1.2rem;
+
+    .score-player {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+
+      &.blue span { color: var(--c-blue); }
+      &.orange span { color: var(--c-orange); }
+
+      img { width: 24px; }
+    }
+  }
+}
+
+// Theme overrides for Game Over Screen
+#app.theme-code-vibes #screen-game-over {
+  .game-over-title {
+    color: #4dd5bc;
+    text-shadow:
+      1px 1px 0 rgba(0, 0, 0, 0.6),
+      2px 2px 0 rgba(0, 0, 0, 0.6),
+      3px 3px 0 rgba(0, 0, 0, 0.6),
+      4px 4px 0 rgba(0, 0, 0, 0.6),
+      5px 5px 6px rgba(0, 0, 0, 0.4);
+    letter-spacing: 2px;
+  }
+}
+
+#app.theme-gaming #screen-game-over {
+  .game-over-title {
+    color: #ED1B76;
+    text-shadow: none;
+    text-transform: uppercase; 
+  }
+}
