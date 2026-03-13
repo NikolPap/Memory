@@ -1,0 +1,53 @@
+@use "../abstracts/mixins" as *;
+
+// ==========================================
+// CARD COMPONENT
+// ==========================================
+.card {
+  width: var(--card-width);
+  height: var(--card-height);
+  background: transparent;
+  border: none;
+  position: relative;
+  outline: none;
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &.is-flipped &__inner {
+    transform: rotateY(180deg);
+  }
+
+  &__face {
+    @include absolute-cover;
+    @include flex-center;
+    backface-visibility: hidden;
+    border-radius: var(--card-radius);
+    overflow: var(--card-overflow);
+
+    &--cover {
+      background: var(--card-cover);
+      @include bg-contain;
+    }
+
+    &--content {
+      transform: rotateY(180deg);
+      background: var(--card-face);
+      color: var(--card-face-text);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}
